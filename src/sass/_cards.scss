@@ -1,9 +1,11 @@
 body {
   background: linear-gradient(
     109.6deg,
-    rgb(213, 232, 255) 11.2%,
-    rgb(195, 226, 255) 91.1%
+    rgb(247, 251, 255, 0.9) 11.2%,
+    rgb(208, 232, 255, 0.9) 91.1%
   );
+
+
 }
 
 #form {
@@ -12,16 +14,16 @@ body {
   gap: 20px;
   padding: 30px 0;
 
-  background: rgb(25, 94, 242);
+  background: rgb(114, 158, 255);
   background: linear-gradient(
     273deg,
-    rgba(25, 94, 242, 1) 1%,
+    rgba(61, 155, 255, 0.35) 1%,
     rgba(214, 228, 236, 0.9318321078431373) 50%,
-    rgba(25, 94, 242, 1) 100%
+    rgba(61, 155, 255, 0.40) 100%
   );
-  -webkit-box-shadow: 0px 13px 30px 2px rgba(0, 0, 0, 0.59);
-  -moz-box-shadow: 0px 13px 30px 2px rgba(0, 0, 0, 0.59);
-  box-shadow: 0px 13px 30px 2px rgba(0, 0, 0, 0.59);
+  -webkit-box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
+  box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
 }
 
 .form-input {
@@ -36,6 +38,10 @@ body {
   -webkit-box-shadow: 0px 12px 12px -11px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 0px 12px 12px -11px rgba(0, 0, 0, 0.59);
   box-shadow: 0px 12px 12px -11px rgba(0, 0, 0, 0.59);
+
+  &:focus {
+    outline: 1px solid rgb(16, 147, 255);
+  }
 }
 
 .search-btn {
@@ -55,15 +61,16 @@ body {
   -moz-box-shadow: 0px 12px 12px -11px rgba(0, 0, 0, 0.59);
   box-shadow: 0px 12px 12px -11px rgba(0, 0, 0, 0.59);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: rgb(25, 94, 242);
     background: rgb(214, 228, 236);
     background: rgb(77, 165, 231);
     background: rgb(77, 165, 231);
     background: linear-gradient(
       273deg,
-      rgba(77, 165, 231, 1) 5%,
-      rgba(25, 94, 242, 1) 64%
+      rgba(77, 165, 231, 0.5) 5%,
+      rgba(25, 94, 242, 0.6) 64%
     );
     color: antiquewhite;
     cursor: pointer;
