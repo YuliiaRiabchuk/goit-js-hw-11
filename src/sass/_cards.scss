@@ -4,26 +4,40 @@ body {
     rgb(247, 251, 255, 0.9) 11.2%,
     rgb(208, 232, 255, 0.9) 91.1%
   );
-
-
 }
 
-#form {
+.container {
+  min-width: 100%;
+  max-width: 1400px;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 18px 20px;
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 30px 0;
+}
 
+.header-section {
+  z-index: 2;
+
+  position: sticky;
+  top: 0;
+  left: 0;
   background: rgb(114, 158, 255);
   background: linear-gradient(
     273deg,
     rgba(61, 155, 255, 0.35) 1%,
     rgba(214, 228, 236, 0.9318321078431373) 50%,
-    rgba(61, 155, 255, 0.40) 100%
+    rgba(61, 155, 255, 0.4) 100%
   );
-  -webkit-box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
-  -moz-box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
-  box-shadow: 0px 5px 16px -1px rgba(0,0,0,0.59);
+  -webkit-box-shadow: 0px 5px 16px -1px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 5px 16px -1px rgba(0, 0, 0, 0.59);
+  box-shadow: 0px 5px 16px -1px rgba(0, 0, 0, 0.59);
+}
+
+#form {
+  display: flex;
+  gap: 15px;
 }
 
 .form-input {
@@ -45,7 +59,7 @@ body {
 }
 
 .search-btn {
-  width: 150px;
+  width: 200px;
   padding: 10px 15px;
   background-image: linear-gradient(to top, #f9feff 0%, #c2dfed 100%);
 
@@ -63,16 +77,85 @@ body {
 
   &:hover,
   &:focus {
-    background: rgb(25, 94, 242);
-    background: rgb(214, 228, 236);
-    background: rgb(77, 165, 231);
-    background: rgb(77, 165, 231);
-    background: linear-gradient(
-      273deg,
-      rgba(77, 165, 231, 0.5) 5%,
-      rgba(25, 94, 242, 0.6) 64%
+    // background: rgb(25, 94, 242);
+    // background: rgb(214, 228, 236);
+    // background: rgb(77, 165, 231);
+    // background: rgb(77, 165, 231);
+    // background: linear-gradient(
+    //   273deg,
+    //   rgba(77, 165, 231, 0.5) 5%,
+    //   rgba(25, 94, 242, 0.6) 64%
+    // );
+
+    // GRADIENT BTN
+    background-image: linear-gradient(
+      to right,
+      #004ff9 0%,
+      #fff94c 51%,
+      #004ff9 100%
     );
-    color: antiquewhite;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    background-position: right center; /* change the direction of the change here */
+    color: white;
     cursor: pointer;
   }
+}
+
+.gallery-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.photo-card__wrapper {
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 1px 1px 2px 1px rgba(93, 93, 93, 0.75);
+  border-radius: 3px;
+
+  background: rgb(114, 158, 255);
+  background: linear-gradient(
+    273deg,
+    rgba(61, 155, 255, 0.35) 1%,
+    rgba(214, 228, 236, 0.9318321078431373) 50%,
+    rgba(61, 155, 255, 0.4) 100%
+  );
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+
+
+
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  transition: width 400ms, height 400ms;
+
+}
+
+.img {
+  width: 350px;
+  height: 230px;
 }

@@ -6,10 +6,19 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.js-form');
+const guard = document.querySelector('.js-guard');
 
 let page = 1;
 let searchQuery = '';
 let lightBox = new SimpleLightbox('.gallery div a');
+
+const options = {
+  root: null,
+  rootMargin: '300px',
+  threshold: 1.0,
+};
+
+
 
 form.addEventListener('submit', onSubmit);
 
@@ -22,12 +31,29 @@ function onSubmit(evt) {
     .replaceAll(/\s+/g, '+');
 
   //   loadImg();
-//   loadMarkup();
+  //   loadMarkup();
   gallery.innerHTML = '';
 
   if (searchQuery === '') {
     Notiflix.Notify.info('Please, enter something to search!');
     return;
+  }
+
+  let observer = new IntersectionObserver(onLoad, options);
+  function onLoad(entries, observer){
+
+    entries.forEach((entry)=> {
+        if(entry.isIntersecting) {
+            page +=1
+
+        fetchPixabayApi(page).then((data) => {
+            createMarkup(data.hits)
+            if(data.page === data.pages) {
+                observer.unobserve(guard);
+            }})
+            .catch(err => console.log(err))
+        }
+    })
   }
 
   fetchPixabayApi(searchQuery)
@@ -38,7 +64,7 @@ function onSubmit(evt) {
         );
       } else {
         createMarkup(data.hits);
-        // foundImg();
+        observer.observe(guard);
         lightBox.refresh();
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       }
@@ -53,19 +79,20 @@ function onSubmit(evt) {
 // function foundImg() {}
 
 function createMarkup(arr) {
-  const markup = arr.map(
-    ({
-      largeImageURL,
-      webformatURL,
-      tags,
-      likes,
-      views,
-      comments,
-      downloads,
-    }) =>
-      `   <div class="photo-card">
+  const markup = arr
+    .map(
+      ({
+        largeImageURL,
+        webformatURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `   <div class="photo-card__wrapper">
     
-    <a class="gallery__item" href='${largeImageURL}'>
+    <a class="photo-card" href='${largeImageURL}'>
     <img class="img"
          src="${webformatURL}" 
          alt="${tags}" 
@@ -86,8 +113,7 @@ function createMarkup(arr) {
       </p>
     </div>
   </div>`
-  ).join('')
-  gallery.insertAdjacentHTML('beforeend', markup)
+    )
+    .join('');
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
-
-
