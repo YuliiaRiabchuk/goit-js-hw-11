@@ -30,8 +30,6 @@ function onSubmit(evt) {
     .trim()
     .replaceAll(/\s+/g, '+');
 
-  //   loadImg();
-  //   loadMarkup();
   gallery.innerHTML = '';
 
   if (searchQuery === '') {
@@ -48,9 +46,10 @@ function onSubmit(evt) {
 
         fetchPixabayApi(page).then((data) => {
             createMarkup(data.hits)
-            if(data.page === data.pages) {
-                observer.unobserve(guard);
-            }})
+            // if(data.page === data.pages) {
+            //     observer.unobserve(guard);
+            // }
+          })
             .catch(err => console.log(err))
         }
     })
@@ -69,14 +68,9 @@ function onSubmit(evt) {
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       }
     })
-    .catch(err => console.log(err.message));
+    .catch(err => console.log(err));
 }
 
-// function loadImg() {
-
-// }
-
-// function foundImg() {}
 
 function createMarkup(arr) {
   const markup = arr
@@ -114,6 +108,6 @@ function createMarkup(arr) {
     </div>
   </div>`
     )
-    .join('');
+    .join(" ");
   gallery.insertAdjacentHTML('beforeend', markup);
 }

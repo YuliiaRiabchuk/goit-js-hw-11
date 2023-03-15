@@ -114,23 +114,20 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 30px;
   max-width: 100%;
 }
 
 .photo-card__wrapper {
-  position: relative;
-  overflow: hidden;
-
   box-shadow: 1px 1px 2px 1px rgba(93, 93, 93, 0.75);
   border-radius: 3px;
 
   background: rgb(114, 158, 255);
   background: linear-gradient(
     273deg,
-    rgba(61, 155, 255, 0.35) 1%,
+    rgba(162, 220, 247, 0.303) 1%,
     rgba(214, 228, 236, 0.9318321078431373) 50%,
-    rgba(61, 155, 255, 0.4) 100%
+    rgba(61, 155, 255, 0.2) 100%
   );
 
   &:hover,
@@ -142,20 +139,46 @@ body {
 
 
 .photo-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
 
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
 
-  transition: width 400ms, height 400ms;
+//   transition: width 400ms, height 400ms;
 
 }
 
 .img {
   width: 350px;
   height: 230px;
+  display: block;
 }
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    width: 285px;
+    margin: 0 auto;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+
+.desk{
+    font-size: 12px;
+      color: #252424;
+      
+    }
