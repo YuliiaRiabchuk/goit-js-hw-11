@@ -10,7 +10,10 @@ const guard = document.querySelector('.js-guard');
 
 let page = 1;
 let searchQuery = '';
-let lightBox = new SimpleLightbox('.gallery div a');
+let lightBox = new SimpleLightbox('.gallery div a',{
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
 const options = {
   root: null,
@@ -44,8 +47,10 @@ function onSubmit(evt) {
         if(entry.isIntersecting) {
             page +=1
 
-        fetchPixabayApi(page).then((data) => {
+        fetchPixabayApi(searchQuery, page).then((data) => {
             createMarkup(data.hits)
+            lightBox.refresh();
+    
             // if(data.page === data.pages) {
             //     observer.unobserve(guard);
             // }
@@ -84,7 +89,7 @@ function createMarkup(arr) {
         comments,
         downloads,
       }) =>
-        `   <div class="photo-card__wrapper">
+        `   <div class="photo-card__wrapper thumb">
     
     <a class="photo-card" href='${largeImageURL}'>
     <img class="img"
@@ -92,7 +97,7 @@ function createMarkup(arr) {
          alt="${tags}" 
          loading="lazy" />
     </a>
-    <div class="info">
+    <div class="info overlay">
       <p class="info-item">
         <b>Likes <span class="desk"> ${likes} </span></b>
       </p>
